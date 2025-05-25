@@ -1,3 +1,9 @@
+#To make a new tower type make a new scene with the root node being of the tower class
+#Drag the projectile scene file for the desired projectile file from the bottom left explorer into the projecting variable export
+#add a raycast2d node as well as an area 2d Node and assign these to their export variables as well as denoting a cooldown
+
+
+
 extends Node2D
 class_name Tower
 
