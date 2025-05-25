@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://v4pgqv47la"]
+
+[ext_resource type="Script" path="res://boom_bot.gd" id="1_wush8"]
+[ext_resource type="Texture2D" uid="uid://ctx3qnccupo4l" path="res://icon.svg" id="2_ffcsf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcxs2"]
+radius = 59.439
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxsr7"]
+
+[node name="BoomBot" type="PathFollow2D" groups=["Bot"]]
+loop = false
+script = ExtResource("1_wush8")
+max_health = 20
+move_speed = 2.0
+cog_cost = 50
+cog_multiplier = 0.75
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ffcsf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+light_mask = 0
+visibility_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_jcxs2")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_nxsr7")
