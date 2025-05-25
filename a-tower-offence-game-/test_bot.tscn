@@ -17,8 +17,8 @@ rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_mptcw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_f8jl4")

@@ -5,6 +5,7 @@ var cogs: int
 const starting_cogs: int = 200
 var bot: Bot
 
+
 var bot_dict: Dictionary = {
 	"test": preload("uid://cdv3bxyerik2f"),
 	"boom": preload("uid://v4pgqv47la"),
@@ -24,11 +25,22 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		bot.take_damage(5)
 	if event.is_action_pressed("ui_down"):
 		bot.take_damage(20)
+	if event.is_action_pressed("ui_right"):
+		print("projectile fired")
+		test_projectile()
+	if event.is_action_pressed("ui_left"):
+		$TestTower.attack()
 #REMOVE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func test_projectile():
+	var proj = preload("res://test_projectile.tscn").instantiate()
+	proj.position = Vector2(10, 300)
+	proj.direction = Vector2(1, 0)
+	add_child(proj)
 
 func spawn_bot(bot_name):
 	bot = bot_dict[bot_name].instantiate()

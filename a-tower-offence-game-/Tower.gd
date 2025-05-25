@@ -1,21 +1,63 @@
 extends Node2D
 class_name Tower
 
-var detectionarea : Area2D
-@onready var projectile = load('res://Projectile.gd')
-var attackspeed: float 
+@export var detection_area : Area2D
+@export var ray_cast: RayCast2D
+@export var projectile: PackedScene
+@export var max_cooldown: float
 
 
-func spawn(toTroopVector):
-	var instance = projectile.instantiate()
-	
-	
+var cooldown_timer: float
+var attack_speed: float 
+var areas: Array[Area2D]
+var bot: Bot
+var target: Bot
+var dir
+
 	
 
 func _ready() -> void:
-	pass # Replace with function body.
+	cooldown_timer = max_cooldown#
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	
+	cooldown_timer-= delta
+	
+	if cooldown_timer <= 0:
+		cooldown_timer = 0
+		attack()
+			
+
+func attack():
+	#Find all areas in detection
+	areas = detection_area.get_overlapping_areas()
+	print("attacking_start")
+	for area in areas:
+		print("attacking")
+		bot = area.get_parent()
+		#Target RayCast at bot
+		ray_cast.target_position = bot.global_position-ray_cast.global_position
+		if !ray_cast.is_colliding():
+			if !target:
+				target = bot
+		elif bot.progress > target.progress:
+			target = bot
+	
+	#After found target:
+	if target:
+		dir = target.global_position-self.global_position
+		var proj = projectile.instantiate()
+		proj.direction = dir
+		add_child(proj)
+		target = null
+		bot = null
+		cooldown_timer = max_cooldown
+
+	else:
+		cooldown_timer = 0.1
+
+	
+	

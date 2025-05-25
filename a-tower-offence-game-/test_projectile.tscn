@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp1d62qnrtb3w"]
+
+[ext_resource type="Script" path="res://Projectile.gd" id="1_ewgdd"]
+[ext_resource type="Texture2D" uid="uid://ctx3qnccupo4l" path="res://icon.svg" id="2_qrw6v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs6mh"]
+radius = 33.0
+height = 90.0
+
+[node name="TestProj" type="Node2D"]
+script = ExtResource("1_ewgdd")
+damage = 5
+airspeed = 0.5
+max_pierce = 5
+max_lifetime = 10.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_hs6mh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qrw6v")

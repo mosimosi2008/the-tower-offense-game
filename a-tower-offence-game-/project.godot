@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="A Tower Offence Game"
-run/main_scene="res://Projectile.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,3 +23,4 @@ Bot=""
 2d_physics/layer_1="Bot"
 2d_physics/layer_2="Projectile"
 2d_physics/layer_3="Tower"
+2d_physics/layer_4="Wall"
