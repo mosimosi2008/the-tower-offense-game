@@ -47,9 +47,13 @@ func attack():
 		if !ray_cast.is_colliding():
 			if !target:
 				target = bot
-		elif bot.progress > target.progress:
-			target = bot
-	
+			elif target.is_in_group("Pop_Bot") and !bot.is_in_group("Pop_Bot"):
+				target = bot
+			elif bot.progress > target.progress:
+				#PopBot logic
+				if !bot.is_in_group("Pop_Bot") or (target.is_in_group("Pop_Bot") and bot.is_in_group("Pop_Bot")):
+					target = bot
+		
 	#After found target:
 	if target:
 		dir = target.global_position-self.global_position

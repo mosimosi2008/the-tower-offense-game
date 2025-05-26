@@ -14,9 +14,8 @@ script = ExtResource("1_wush8")
 max_health = 20
 move_speed = 2.0
 cog_cost = 50
-cog_multiplier = 0.75
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Bot"]]
 rotation = 1.5708
 texture = ExtResource("2_ffcsf")
 

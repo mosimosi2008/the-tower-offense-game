@@ -11,13 +11,12 @@ script = ExtResource("1_s6lu1")
 max_health = 50
 move_speed = 0.5
 cog_cost = 100
-cog_multiplier = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("2_ovf7x")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=["Bot"]]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

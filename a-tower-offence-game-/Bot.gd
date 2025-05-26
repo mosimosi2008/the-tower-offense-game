@@ -9,7 +9,7 @@ signal bot_hit
 @export var max_health: int
 @export var move_speed: float
 @export var cog_cost: int
-@export var cog_multiplier: float
+@export var cog_return: float
 
 
 var health: int
@@ -37,7 +37,6 @@ func behaviour(delta):
 
 func take_damage(damage):
 	health-= damage
-	print(health)
 	if health <= 0:
 		health = 0
 		on_death()
@@ -45,7 +44,7 @@ func take_damage(damage):
 		
 
 func finish():
-	bot_finish.emit(cog_cost*cog_multiplier)
+	bot_finish.emit(cog_cost*cog_return)
 	self.queue_free()
 
 func get_hit(area):

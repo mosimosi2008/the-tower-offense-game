@@ -2,7 +2,7 @@ extends Node2D
 
 var current_path: Path2D
 var cogs: int
-const starting_cogs: int = 200
+const starting_cogs: int = 100000
 var bot: Bot
 
 
@@ -10,7 +10,8 @@ var bot_dict: Dictionary = {
 	"test": preload("uid://cdv3bxyerik2f"),
 	"boom": preload("uid://v4pgqv47la"),
 	"heal": preload("uid://c767vqha1r5x8"),
-	"mom": preload("uid://emtn7fi6irv6")
+	"mom": preload("uid://emtn7fi6irv6"),
+	"pop": preload("uid://bovma4wp2rk2r")
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,9 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		spawn_bot("mom")
+	
+	if event.is_action_pressed("ui_up"):
+		spawn_bot("pop")
 		
 	if event.is_action_pressed("ui_down"):
 		bot.take_damage(20)
