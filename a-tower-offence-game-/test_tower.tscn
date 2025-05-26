@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcj7lbenpy2t7"]
+[gd_scene load_steps=6 format=3 uid="uid://bcj7lbenpy2t7"]
 
 [ext_resource type="Script" path="res://Tower.gd" id="1_54pj5"]
 [ext_resource type="PackedScene" uid="uid://bp1d62qnrtb3w" path="res://test_projectile.tscn" id="2_bc881"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4qkl"]
 radius = 299.328
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fw3py"]
+size = Vector2(92, 89)
 
 [node name="TestTower" type="Node2D" node_paths=PackedStringArray("detection_area", "ray_cast")]
 script = ExtResource("1_54pj5")
@@ -21,10 +24,18 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_h4qkl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_rsar1")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 8
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_fw3py")

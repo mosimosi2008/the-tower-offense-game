@@ -9,7 +9,8 @@ var bot: Bot
 var bot_dict: Dictionary = {
 	"test": preload("uid://cdv3bxyerik2f"),
 	"boom": preload("uid://v4pgqv47la"),
-	"heal": preload("uid://c767vqha1r5x8")
+	"heal": preload("uid://c767vqha1r5x8"),
+	"mom": preload("uid://emtn7fi6irv6")
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,15 +20,12 @@ func _ready() -> void:
 #TEST, REMEMBER TO REMOVE THIS
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		spawn_bot("heal")
-		await get_tree().create_timer(0.5).timeout
-		spawn_bot("test")
-		bot.take_damage(5)
+		spawn_bot("mom")
+		
 	if event.is_action_pressed("ui_down"):
 		bot.take_damage(20)
-	if event.is_action_pressed("ui_right"):
-		print("projectile fired")
-		test_projectile()
+
+		
 	if event.is_action_pressed("ui_left"):
 		$TestTower.attack()
 #REMOVE
@@ -48,6 +46,8 @@ func spawn_bot(bot_name):
 		current_path.add_child(bot)
 		bot.bot_finish.connect(bot_finish)
 		cogs-= bot.cog_cost
+		if bot_name == "mom":
+			bot.mom_bot_death.connect(mom_bot_death)
 	print("cogs: ")
 	print(cogs)
 	print()
@@ -58,3 +58,10 @@ func bot_finish(cog_return):
 	print("cogs:")
 	print(cogs)
 	print()
+
+func stun(stun_time: float, tower: Tower):
+	tower.stun(stun_time)
+
+func mom_bot_death(children):
+	for child in children:
+		child.bot_finish.connect(bot_finish)

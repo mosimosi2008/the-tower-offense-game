@@ -9,7 +9,7 @@ height = 90.0
 
 [node name="TestProj" type="Node2D"]
 script = ExtResource("1_ewgdd")
-damage = 5
+damage = 30
 airspeed = 0.5
 max_pierce = 5
 max_lifetime = 10.0

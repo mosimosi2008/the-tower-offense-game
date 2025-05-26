@@ -9,11 +9,11 @@ _data = {
 }
 point_count = 7
 
-[node name="TestScene" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_f1mfh")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8tvs1")
 
 [node name="TestTower" parent="." instance=ExtResource("2_nutyx")]
-position = Vector2(352, 318)
+position = Vector2(490, 331)

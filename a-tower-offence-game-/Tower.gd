@@ -40,9 +40,7 @@ func _process(delta: float) -> void:
 func attack():
 	#Find all areas in detection
 	areas = detection_area.get_overlapping_areas()
-	print("attacking_start")
 	for area in areas:
-		print("attacking")
 		bot = area.get_parent()
 		#Target RayCast at bot
 		ray_cast.target_position = bot.global_position-ray_cast.global_position
@@ -65,5 +63,8 @@ func attack():
 	else:
 		cooldown_timer = 0.1
 
-	
+func stun(time):
+	self.set_process(false)
+	await get_tree().create_timer(time).timeout
+	self.set_process(true)
 	
