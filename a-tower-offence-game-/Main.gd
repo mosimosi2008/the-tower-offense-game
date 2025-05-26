@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	pass
 
 func test_projectile():
-	var proj = preload("res://test_projectile.tscn").instantiate()
+	var proj = preload("res://Miscellaneous/Tests/test_projectile.tscn").instantiate()
 	proj.position = Vector2(10, 300)
 	proj.direction = Vector2(1, 0)
 	add_child(proj)
