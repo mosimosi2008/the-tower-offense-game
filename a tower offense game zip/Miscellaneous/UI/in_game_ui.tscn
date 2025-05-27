@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://fovmvenmdjd5"]
+
+[ext_resource type="Script" path="res://Miscellaneous/UI/mini.gd" id="1_hf66d"]
+[ext_resource type="Script" path="res://Miscellaneous/UI/in_game_ui.gd" id="1_s65ko"]
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s65ko")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Mini" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+text = "MiniBot"
+script = ExtResource("1_hf66d")
+bot_name = "mini"
+
+[node name="Zoom" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+text = "Zoombot"
+script = ExtResource("1_hf66d")
+bot_name = "zoom"
+
+[node name="Boom" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+text = "BoomBot"
+script = ExtResource("1_hf66d")
+bot_name = "boom"
+
+[node name="Mom" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+text = "MomBot"
+script = ExtResource("1_hf66d")
+bot_name = "mom"
+
+[node name="Heal" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+text = "HealBot"
+script = ExtResource("1_hf66d")
+bot_name = "heal"
+
+[node name="Pop" type="Button" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+text = "PopBot"
+script = ExtResource("1_hf66d")
+bot_name = "pop"
+
+[connection signal="bot_spawn" from="PanelContainer/HBoxContainer/Mini" to="." method="spawn"]
+[connection signal="bot_spawn" from="PanelContainer/HBoxContainer/Zoom" to="." method="spawn"]
+[connection signal="bot_spawn" from="PanelContainer/HBoxContainer/Boom" to="." method="spawn"]
+[connection signal="bot_spawn" from="PanelContainer/HBoxContainer/Mom" to="." method="spawn"]
+[connection signal="bot_spawn" from="PanelContainer/HBoxContainer/Heal" to="." method="spawn"]
+[connection signal="bot_spawn" from="PanelContainer/HBoxContainer/Pop" to="." method="spawn"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://emtn7fi6irv6"]
+
+[ext_resource type="Script" path="res://Bots/MomBot/mom_bot.gd" id="1_s6lu1"]
+[ext_resource type="Texture2D" uid="uid://ctx3qnccupo4l" path="res://icon.svg" id="2_ovf7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_caqmt"]
+size = Vector2(91, 92)
+
+[node name="MomBot" type="PathFollow2D"]
+script = ExtResource("1_s6lu1")
+max_health = 50
+move_speed = 0.5
+cog_cost = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ovf7x")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Bot"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_caqmt")

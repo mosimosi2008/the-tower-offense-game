@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfl46n6sxsxqi"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_f1mfh"]
+[ext_resource type="PackedScene" uid="uid://bcj7lbenpy2t7" path="res://Miscellaneous/Tests/test_tower.tscn" id="2_nutyx"]
+
+[sub_resource type="Curve2D" id="Curve2D_8tvs1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 218, 444, 0, 0, 0, 0, 225, 186, 0, 0, 0, 0, 489, 163, 0, 0, 0, 0, 489, 586, 0, 0, 0, 0, 486, 586, 0, 0, 0, 0, 823, 158, 0, 0, 0, 0, 834, 650)
+}
+point_count = 7
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_f1mfh")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8tvs1")
+
+[node name="TestTower" parent="." instance=ExtResource("2_nutyx")]
+position = Vector2(490, 331)

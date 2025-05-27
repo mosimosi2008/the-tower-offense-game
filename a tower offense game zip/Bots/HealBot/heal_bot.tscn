@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c767vqha1r5x8"]
+
+[ext_resource type="Script" path="res://Bots/HealBot/heal_bot.gd" id="1_4cysi"]
+[ext_resource type="Texture2D" uid="uid://ctx3qnccupo4l" path="res://icon.svg" id="2_8d0nb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ry1kx"]
+radius = 93.086
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kudby"]
+
+[node name="HealBot" type="PathFollow2D" groups=["Bot"]]
+loop = false
+script = ExtResource("1_4cysi")
+max_health = 10
+move_speed = 1.0
+cog_cost = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_8d0nb")
+
+[node name="HealBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealBox"]
+shape = SubResource("CircleShape2D_ry1kx")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Bot"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_kudby")

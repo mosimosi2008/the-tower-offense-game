@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccgcae5727bdd"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_qyjgx"]
+[ext_resource type="PackedScene" uid="uid://fovmvenmdjd5" path="res://Miscellaneous/UI/in_game_ui.tscn" id="2_l5vbp"]
+
+[sub_resource type="Curve2D" id="Curve2D_nntlw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -3, -214, 0, 0, 0, 0, 306, -31, 0, 0, 0, 0, 529, -201, 0, 0, 0, 0, 804, -22, 0, 0, 0, 0, 887, -177, 0, 0, 0, 0, 1015, -108, 0, 0, 0, 0, 946, 51)
+}
+point_count = 7
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("starting_floor")]
+position = Vector2(133, 349)
+script = ExtResource("1_qyjgx")
+starting_floor = NodePath("Path2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGameUI" parent="CanvasLayer" instance=ExtResource("2_l5vbp")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nntlw")
+
+[connection signal="spawn_bot" from="CanvasLayer/InGameUI" to="." method="spawn_bot"]
